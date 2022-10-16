@@ -2,10 +2,12 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <>
-      <h1>To Do App</h1>
-      <Form />
-    </>
+    <div className="wrapper">
+      <h2>React To Do App using Local Storage</h2>
+      <div className="form-and-todo-box">
+        <Form />
+      </div>
+    </div>
   );
 }
 

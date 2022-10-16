@@ -11,7 +11,7 @@ const Form = () => {
             <input type="text" placeholder="Add to do items" required />
             <div className="button">
               <button type="submit">
-                <FaPlus />
+                <FaPlus size={25}/>
               </button>
             </div>
           </div>
