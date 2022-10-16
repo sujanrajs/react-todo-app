@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const getTodosFromLS = () => {
   const data = localStorage.getItem("Todos");
@@ -14,8 +14,6 @@ const getTodosFromLS = () => {
 const Form = () => {
   const [todoValue, setTodoValue] = useState("");
   const [todos, setTodos] = useState(getTodosFromLS());
-
-  console.log(todos);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +54,26 @@ const Form = () => {
             </div>
           </div>
         </form>
+        {todos.length > 0 && (
+          <>
+            {todos.map((singleItem, index) => (
+              <div className="todo-lists" key={singleItem.ID}>
+                <div>
+                  <input type="checkbox" />
+                  <span>{singleItem.TodoValue}</span>
+                </div>
+                <div className="edit-and-delete">
+                  <div style={{ marginRight: 10 }}>
+                    <FaEdit size={20} />
+                  </div>
+                  <div>
+                    <FaTrash size={20} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </>
   );

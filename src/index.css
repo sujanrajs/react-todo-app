@@ -61,3 +61,32 @@ h2 {
   background-color: transparent;
   color: #fff;
 }
+
+.form-and-todo-box .input-and-button .button.edit {
+  width: auto;
+  padding: 0px 10px;
+}
+
+.todo-lists {
+  margin: 15px 0px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+
+.todo-lists input {
+  margin-right: 5px;
+}
+
+.todo-lists span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.todo-lists .edit-and-delete {
+  display: flex;
+  cursor: pointer;
+}
