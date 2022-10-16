@@ -35,6 +35,13 @@ const Form = () => {
     localStorage.setItem("Todos", JSON.stringify(todos));
   }, [todos]);
 
+  const handleDelete = (id) => {
+    const filtered = todos.filter((todo) => {
+      return todo.ID !== id;
+    });
+    setTodos(filtered);
+  };
+
   return (
     <>
       <div className="form">
@@ -66,7 +73,7 @@ const Form = () => {
                   <div style={{ marginRight: 10 }}>
                     <FaEdit size={20} />
                   </div>
-                  <div>
+                  <div onClick={() => handleDelete(singleItem.ID)}>
                     <FaTrash size={20} />
                   </div>
                 </div>
