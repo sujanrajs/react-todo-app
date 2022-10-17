@@ -56,11 +56,26 @@ const Form = () => {
     let items = [...todos];
     let item = items[id];
     item.TodoValue = todoValue;
-    // item.completed = false;
+    item.completed = false;
     items[id] = item;
     setTodos(items);
     setTodoValue("");
     setEditForm(false);
+  };
+
+  const handleCheckbox = (id) => {
+    let todoArray = [];
+    todos.forEach((todo) => {
+      if (todo.ID === id) {
+        if (todo.completed === false) {
+          todo.completed = true;
+        } else if (todo.completed === true) {
+          todo.completed = false;
+        }
+      }
+      todoArray.push(todo);
+      setTodos(todoArray);
+    });
   };
 
   return (
@@ -108,8 +123,22 @@ const Form = () => {
           {todos.map((singleItem, index) => (
             <div className="todo-lists" key={singleItem.ID}>
               <div>
-                {editForm === false && <input type="checkbox" />}
-                <span>{singleItem.TodoValue}</span>
+                {editForm === false && (
+                  <input
+                    type="checkbox"
+                    checked={singleItem.completed}
+                    onChange={() => handleCheckbox(singleItem.ID)}
+                  />
+                )}
+                <span
+                  style={
+                    singleItem.completed === true
+                      ? { textDecoration: "line-through" }
+                      : { textDecoration: "none" }
+                  }
+                >
+                  {singleItem.TodoValue}
+                </span>
               </div>
               {editForm === false && (
                 <div className="edit-and-delete">
