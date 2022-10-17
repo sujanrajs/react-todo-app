@@ -81,6 +81,13 @@ const Form = () => {
             ))}
           </>
         )}
+        <div
+          style={{ display: "flex", justifyContent: "flex-end", marginTop: 5 }}
+        >
+          <button onClick={() => setTodos([])} className="delete-all">
+            Delete All
+          </button>
+        </div>
       </div>
     </>
   );

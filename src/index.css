@@ -90,3 +90,8 @@ h2 {
   display: flex;
   cursor: pointer;
 }
+
+.delete-all {
+  padding: 10px;
+  cursor: pointer;
+}
