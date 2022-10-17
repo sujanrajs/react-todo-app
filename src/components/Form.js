@@ -42,53 +42,103 @@ const Form = () => {
     setTodos(filtered);
   };
 
+  const [editForm, setEditForm] = useState(false);
+  const [id, setId] = useState();
+
+  const handleEdit = (todo, index) => {
+    setEditForm(true);
+    setId(index);
+    setTodoValue(todo.TodoValue);
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    let items = [...todos];
+    let item = items[id];
+    item.TodoValue = todoValue;
+    // item.completed = false;
+    items[id] = item;
+    setTodos(items);
+    setTodoValue("");
+    setEditForm(false);
+  };
+
   return (
     <>
-      <div className="form">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <div className="input-and-button">
-            <input
-              type="text"
-              required
-              placeholder="Add to do items"
-              onChange={(e) => setTodoValue(e.target.value)}
-              value={todoValue}
-            />
-            <div className="button">
-              <button type="submit">
-                <FaPlus size={25} />
-              </button>
+      {editForm === false && (
+        <div className="form">
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <div className="input-and-button">
+              <input
+                type="text"
+                required
+                placeholder="Add to do items"
+                onChange={(e) => setTodoValue(e.target.value)}
+                value={todoValue}
+              />
+              <div className="button">
+                <button type="submit">
+                  <FaPlus size={25} />
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-        {todos.length > 0 && (
-          <>
-            {todos.map((singleItem, index) => (
-              <div className="todo-lists" key={singleItem.ID}>
-                <div>
-                  <input type="checkbox" />
-                  <span>{singleItem.TodoValue}</span>
-                </div>
+          </form>
+        </div>
+      )}
+      {editForm === true && (
+        <div className="form">
+          <form autoComplete="off" onSubmit={handleEditSubmit}>
+            <div className="input-and-button">
+              <input
+                type="text"
+                required
+                placeholder="Add to do items"
+                onChange={(e) => setTodoValue(e.target.value)}
+                value={todoValue}
+              />
+              <div className="button edit">
+                <button type="submit">Update</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
+      {todos.length > 0 && (
+        <>
+          {todos.map((singleItem, index) => (
+            <div className="todo-lists" key={singleItem.ID}>
+              <div>
+                {editForm === false && <input type="checkbox" />}
+                <span>{singleItem.TodoValue}</span>
+              </div>
+              {editForm === false && (
                 <div className="edit-and-delete">
-                  <div style={{ marginRight: 10 }}>
+                  <div
+                    style={{ marginRight: 10 }}
+                    onClick={() => handleEdit(singleItem, index)}
+                  >
                     <FaEdit size={20} />
                   </div>
                   <div onClick={() => handleDelete(singleItem.ID)}>
                     <FaTrash size={20} />
                   </div>
                 </div>
-              </div>
-            ))}
-          </>
-        )}
-        <div
-          style={{ display: "flex", justifyContent: "flex-end", marginTop: 5 }}
-        >
-          <button onClick={() => setTodos([])} className="delete-all">
-            Delete All
-          </button>
-        </div>
-      </div>
+              )}
+            </div>
+          ))}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: 5,
+            }}
+          >
+            <button onClick={() => setTodos([])} className="delete-all">
+              Delete All
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };
