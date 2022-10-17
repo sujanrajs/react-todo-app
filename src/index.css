@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  color: whitesmoke;
 }
 
 html,
 body {
-  background-color: #e7e7e7;
+  background-color: #133044;
 }
 
 .wrapper {
@@ -40,26 +43,28 @@ h2 {
   outline: none;
   border: none;
   text-indent: 2px;
-  font-size: 16px;
+  font-size: 20px;
+  color: black;
   padding: 5px;
+  border: 1px solid whitesmoke;
 }
 
 .form-and-todo-box .input-and-button .button {
-  width: 8%;
+  width: 10%;
   height: 100%;
-  background-color: green;
+  background-color: #1d1e2c;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -1px;
+  border: 1px solid whitesmoke;
 }
 
 .form-and-todo-box .input-and-button .button button {
   outline: none;
   cursor: pointer;
-  border: 2px solid green;
+  border: none;
   background-color: transparent;
-  color: #fff;
+  font-size: 15px;
 }
 
 .form-and-todo-box .input-and-button .button.edit {
@@ -82,16 +87,19 @@ h2 {
 }
 
 .todo-lists span {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
 }
 
 .todo-lists .edit-and-delete {
   display: flex;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .delete-all {
   padding: 10px;
   cursor: pointer;
+  background-color: #1d1e2c;
+  border: 1px solid whitesmoke;
 }
