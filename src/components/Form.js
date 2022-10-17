@@ -92,7 +92,7 @@ const Form = () => {
                 value={todoValue}
               />
               <div className="button">
-                <button type="submit">
+                <button type="submit" aria-label="Add todo">
                   <FaPlus size={25} />
                 </button>
               </div>
